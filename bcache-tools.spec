@@ -12,6 +12,7 @@ BuildRequires:	libblkid-devel
 BuildRequires:	libuuid-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
+Requires:	util-linux >= 2.24
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
