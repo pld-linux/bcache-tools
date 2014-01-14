@@ -34,7 +34,7 @@ Summary:	bcache support for Dracut
 Summary(pl.UTF-8):	Obsługa bcache dla Dracuta
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
-Requires:	dracut
+Requires:	dracut >= 0.31
 
 %description -n dracut-bcache
 bcache support for Dracut.
