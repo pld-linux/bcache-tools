@@ -2,7 +2,7 @@ Summary:	Userspace tools for bcache
 Summary(pl.UTF-8):	Narzędzia przestrzeni użytkownika do bcache
 Name:		bcache-tools
 Version:	1.0.5
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/g2p/bcache-tools/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -15,6 +15,8 @@ BuildRequires:	pkgconfig
 Requires:	uname(release) >= 3.10
 Requires:	util-linux >= 2.24
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		dracutlibdir	%{_prefix}/lib/dracut
 
 %description
 These are the userspace tools required for bcache.
@@ -52,9 +54,10 @@ CFLAGS="%{rpmcflags}" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},/lib/udev/rules.d,%{_datadir}/initramfs-tools/hooks,/lib/dracut/modules.d,%{_mandir}/man8}
+install -d $RPM_BUILD_ROOT{%{_sbindir},/lib/udev/rules.d,%{_mandir}/man8}
 
 %{__make} install \
+	DRACUTLIBDIR=%{dracutlibdir} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # not supported in pld
@@ -81,5 +84,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n dracut-bcache
 %defattr(644,root,root,755)
-%dir /lib/dracut/modules.d/90bcache
-%attr(755,root,root) /lib/dracut/modules.d/90bcache/module-setup.sh
+%dir %{dracutlibdir}/modules.d/90bcache
+%attr(755,root,root) %{dracutlibdir}/modules.d/90bcache/module-setup.sh
