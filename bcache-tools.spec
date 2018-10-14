@@ -1,12 +1,13 @@
 Summary:	Userspace tools for bcache
 Summary(pl.UTF-8):	Narzędzia przestrzeni użytkownika do bcache
 Name:		bcache-tools
-Version:	1.0.7
+Version:	1.0.8
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/g2p/bcache-tools/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	0a62d183b8b2e4599579ad0e42880406
+# Source0-md5:	d1632a7c37214e0aa38f3cf95624fa46
+Patch0:		%{name}-inline.patch
 URL:		http://bcache.evilpiepirate.org/
 BuildRequires:	libblkid-devel
 BuildRequires:	libuuid-devel
@@ -46,6 +47,7 @@ Obsługa bcache dla Dracuta.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 CC="%{__cc}" \
