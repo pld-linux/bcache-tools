@@ -5,10 +5,11 @@ Version:	1.0.8
 Release:	1
 License:	GPL v2
 Group:		Applications/System
+#Source0Download: https://github.com/g2p/bcache-tools/tags
 Source0:	https://github.com/g2p/bcache-tools/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	d1632a7c37214e0aa38f3cf95624fa46
 Patch0:		%{name}-inline.patch
-URL:		http://bcache.evilpiepirate.org/
+URL:		https://bcache.evilpiepirate.org/
 BuildRequires:	libblkid-devel
 BuildRequires:	libuuid-devel
 BuildRequires:	openssl-devel
